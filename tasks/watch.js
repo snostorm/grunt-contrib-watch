@@ -32,6 +32,9 @@ module.exports = function(grunt) {
 
   // When task runner has ended
   taskrun.on('end', function(time) {
+    watchers.forEach(function(watcher) {
+      watcher.close();
+    });
     if (time > 0) {
       grunt.log.writeln(String(
         'Completed in ' +
